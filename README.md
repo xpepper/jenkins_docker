@@ -19,8 +19,10 @@ Go to http://localhost:8080 and start configuring Jenkins.
 
 * Install the "Blue Ocean" plugin to have a new shining layout :)
 
-Go to http://localhost:8080/configureTools/ and add Maven ('M3')
-Create a new Pipeline Job with this script
+Go to [http://localhost:8080/configureTools/](http://localhost:8080/configureTools/) and add Maven (use the name: 'M3').
+Add your credentials to Jenkins (e.g. `pierodibello-login`) to be able to push your images to a public docker registry (just for example).
+
+Finally, create a new `Pipeline Job` with this groovy script
 
 ```
 node {
