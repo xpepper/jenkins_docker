@@ -27,31 +27,12 @@ Add your credentials to Jenkins (e.g. `pierodibello-login`) to be able to push y
 Go to [http://localhost:8080/credentials/store/system/](http://localhost:8080/credentials/store/system/), then click on "Add credentials".
 
 ### Create the job
-Finally, create a new `Pipeline` job with this groovy script
-
-```
-node {
-   def mvnHome
-   stage('Preparation') {
-      git 'https://github.com/pdincau/employee_admin.git'
-      mvnHome = tool 'M3'
-   }
-   stage('Build') {
-      sh "'${mvnHome}/bin/mvn' clean package"
-   }
-   stage('Bake Image') {
-      docker.withRegistry('https://registry.hub.docker.com', 'pierodibello-login') {
-          def newApp = docker.build("pierodibello/employee_admin:${env.BUILD_NUMBER}")
-          newApp.push()
-      }
-   }
-}
-```
+Finally, create a new `Pipeline` job with the groovy script in the `Jenkinsfile`
 
 ### Run the app
-After almost one build, you can try out the demo app (just for fun):
+After almost one build, you can try out the demo app (just for fun), so connect to the docker image running Jenkins, and the from there run one of the baked images:
 
 ```
- docker exec -it <image_hash> /bin/sh
- docker run -p 8081:8080 <image_name>:<tag>
+ docker exec -it <CONTAINER_ID> /bin/sh
+ docker run -p 8081:8080 <IMAGE_ID>
 ```
