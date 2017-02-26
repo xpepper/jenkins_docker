@@ -24,6 +24,7 @@ Go to [Global Tool Configuration](http://localhost:8080/configureTools/) and add
 
 ### Add your credentials to Jenkins
 Add your credentials to Jenkins (e.g. `pierodibello-login`) to be able to push your images to a public docker registry (just for example).
+
 Go to [http://localhost:8080/credentials/store/system/](http://localhost:8080/credentials/store/system/), then click on "Add credentials".
 
 ### Create the job
