@@ -1,7 +1,7 @@
 node {
    def mvnHome
    stage('Preparation') {
-      git 'https://github.com/xpepper/PasswordStrengthChecker.git'
+      git 'https://github.com/xpepper/employee_admin.git'
       mvnHome = tool 'M3'
    }
    stage('Build') {
